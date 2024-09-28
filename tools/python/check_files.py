@@ -99,7 +99,20 @@ def check_files(images, labels):
     print("\nClasses file not found! Fix before training!")
 
   print("\n==========================================================")
+  
+  print("\nChecking if labels text file exists...")
+  found_classes = False
+  for j in (os.listdir(dataset)):
+    if j == "labels.txt":
+      found_classes = True
+      break
+  if(found_classes):
+    print("\nLabels text file found!")
+  else:
+    print("\nLabels text file not found! Fix before running inferences!")
 
+  print("\n==========================================================")
+  
 def count_species(labels):
   print("\nChecking class distributions via labels...")
   species = {}
