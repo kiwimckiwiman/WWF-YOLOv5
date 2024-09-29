@@ -170,7 +170,7 @@ def run(
     
     #label species map
     class_dict = {}
-    with open("labels.txt", 'r') as file:
+    with open(r"dataset/labels.txt", 'r') as file:
         for line in file:
             class_ = line.rstrip().split(" ")
             class_dict[class_[0]] = class_[1]

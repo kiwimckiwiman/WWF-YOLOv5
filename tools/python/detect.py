@@ -29,19 +29,19 @@ def check_folders():
   if (len(line) == 0):
     print(f"\nWarning!: Labels text file is empty ({labels})!")
     checked = False
-
-  weights_folder = os.path.join(model, 'weights')
   
   if not (os.path.exists(model)):
     print(f"\nModel folder ({model}) does not exist! Aborting inference...")
     checked = False
 
-  elif (os.path.exists(weights_folder)):
-    print(f"\nModel weights folder ({weights_folder}) does not exist! Aborting inference...")
+  weights = os.path.join(model, 'weights')
+
+  if not (os.path.exists(weights)):
+    print(f"\nModel weights folder ({weights}) does not exist! Aborting inference...")
     checked = False
 
-  elif (os.path.exists(os.path.join(weights_folder, 'best.pt'))):
-    print(f"\nModel file folder ({os.path.join(weights_folder, 'best.pt')}) does not exist! Aborting inference...")
+  if not (os.path.exists(os.path.join(weights, 'best.pt'))):
+    print(f"\nModel file folder ({os.path.join(weights, 'best.pt')}) does not exist! Aborting inference...")
     checked = False
 
   return checked
@@ -53,14 +53,14 @@ while True:
     print("\nChecking all folders...")
     if(check_folders()):
       print("\nChecks complete!")
-      sys.exit(1)
+      sys.exit(0)
     else:
       print("\nChecks failed! Please check dataset and rerun")
-      sys.exit(0)
+      sys.exit(1)
     break
   elif user_a == "n" or user_a == "N":
     print("\nStopping program...\n")
-    sys.exit(0)
+    sys.exit(1)
     break
   else:
     print("Invalid input")
