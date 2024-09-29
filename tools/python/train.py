@@ -1,6 +1,7 @@
 #imports
 import os
 os.system('cls')
+import sys
 import tqdm
 import ast
 
@@ -132,13 +133,17 @@ while True:
       print("\nChecking data.yaml file...")
       if(check_data_yaml()):
         print("\nChecks complete!\n")
+        sys.exit(1)
       else:
+        sys.exit(0)
         break
     else:
       print("\nChecks failed! Please check dataset and rerun")
+      sys.exit(0)
     break
   elif user_a == "n" or user_a == "N":
     print("\nStopping program...\n")
+    sys.exit(0)
     break
   else:
     print("Invalid input")

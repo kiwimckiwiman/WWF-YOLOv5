@@ -3,7 +3,7 @@ cd ..
 cd Scripts
 call activate
 cd ..
-python tools/python/train.py
+python tools/python/detect.py
 IF ERRORLEVEL 0 (
 	echo Failed checks, press any key to continue
 	pause
@@ -11,6 +11,6 @@ IF ERRORLEVEL 0 (
 ) ELSE (
 	pause
 	cd yolov5-master
-	python train.py --data data.yaml --weights yolov5m.pt --img 640 --epochs 100 --batch 32
+	python detect.py --source images --weights runs/train/selected/weights/best.pt --save-csv
 	pause
 )
